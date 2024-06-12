@@ -3,3 +3,6 @@ logging:
   level: INFO
   loggers:
     org.asr.experiments: DEBUG
+template: Hello, %s!
+defaultName: Stranger
+
