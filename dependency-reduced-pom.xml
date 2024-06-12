@@ -153,7 +153,7 @@
   </dependencyManagement>
   <properties>
     <dropwizard.version>4.0.7</dropwizard.version>
-    <mainClass>org.asr.experiments.trueApplication</mainClass>
+    <mainClass>org.asr.experiments.TrueApplication</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
