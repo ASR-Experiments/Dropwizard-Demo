@@ -2,7 +2,7 @@
   <configuration default="false" name="TrueApplication" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="org.asr.experiments.TrueApplication" />
     <module name="First" />
-    <option name="PROGRAM_PARAMETERS" value="server config.yml" />
+    <option name="PROGRAM_PARAMETERS" value="server src/main/resources/application-local.yml" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.asr.experiments.*" />
