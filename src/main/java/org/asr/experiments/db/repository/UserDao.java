@@ -29,8 +29,17 @@ public class UserDao extends AbstractDAO<UserEntity> {
         return persist(user);
     }
 
-    public UserEntity update(UserEntity user) {
-        return persist(user);
+    public Optional<UserEntity> update(Long id, UserEntity user) {
+        UserEntity userToUpdate = get(id);
+        if (userToUpdate != null) {
+            userToUpdate.setName(user.getName());
+            userToUpdate.setEmail(user.getEmail());
+            userToUpdate.setPassword(user.getPassword());
+            userToUpdate = currentSession().merge(userToUpdate);
+        } else {
+            return Optional.empty();
+        }
+        return Optional.ofNullable(userToUpdate);
     }
 
     public void delete(UserEntity user) {
