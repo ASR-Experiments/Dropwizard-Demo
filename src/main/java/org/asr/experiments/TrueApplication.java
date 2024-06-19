@@ -8,6 +8,7 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import jakarta.ws.rs.client.Client;
 import org.asr.experiments.client.SampleDownstreamClient;
+import org.asr.experiments.config.TrueConfiguration;
 import org.asr.experiments.db.entity.UserEntity;
 import org.asr.experiments.db.repository.UserDao;
 import org.asr.experiments.health.DatabaseHealthCheck;
@@ -15,7 +16,6 @@ import org.asr.experiments.health.TemplateHealthCheck;
 import org.asr.experiments.resources.EmployeeResource;
 import org.asr.experiments.resources.HelloWorldResource;
 import org.asr.experiments.resources.UserResource;
-import org.glassfish.jersey.client.JerseyClient;
 
 /**
  * This is the main application class for the project. It extends the Dropwizard Application class

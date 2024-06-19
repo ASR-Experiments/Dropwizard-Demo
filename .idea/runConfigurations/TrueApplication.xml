@@ -5,7 +5,7 @@
     <option name="PROGRAM_PARAMETERS" value="server src/main/resources/application-local.yml" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="org.asr.experiments.*" />
+        <option name="PATTERN" value="org.asr.experiments.config.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
