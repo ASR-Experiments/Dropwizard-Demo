@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>4.0.7</dropwizard.version>
+        <guicey.version>7.1.3</guicey.version>
         <mainClass>org.asr.experiments.TrueApplication</mainClass>
     </properties>
 
@@ -46,6 +47,12 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-client</artifactId>
+        </dependency>
+        <!-- For Dependency injection       -->
+        <dependency>
+            <groupId>ru.vyarus</groupId>
+            <artifactId>dropwizard-guicey</artifactId>
+            <version>${guicey.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

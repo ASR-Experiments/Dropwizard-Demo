@@ -1,12 +1,10 @@
-package org.asr.experiments;
+package org.asr.experiments.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.core.Configuration;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.asr.experiments.config.DatabaseConfiguration;
-import org.asr.experiments.config.HttpConfiguration;
 
 public class TrueConfiguration extends Configuration {
     @NotEmpty

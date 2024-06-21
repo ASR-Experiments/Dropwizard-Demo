@@ -1,6 +1,7 @@
 package org.asr.experiments.db.repository;
 
 import io.dropwizard.hibernate.AbstractDAO;
+import jakarta.inject.Inject;
 import org.asr.experiments.db.entity.UserEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDao extends AbstractDAO<UserEntity> {
+
+    @Inject
     public UserDao(SessionFactory sessionFactory) {
         super(sessionFactory);
     }

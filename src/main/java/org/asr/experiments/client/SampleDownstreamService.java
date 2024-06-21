@@ -1,14 +1,19 @@
 package org.asr.experiments.client;
 
+import io.dropwizard.lifecycle.Managed;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriBuilder;
 
-public class SampleDownstreamClient {
+@Singleton
+public class SampleDownstreamService implements Managed {
 
     private final Client httpClient;
 
-    public SampleDownstreamClient(Client httpClient) {
+    @Inject
+    public SampleDownstreamService(Client httpClient) {
         this.httpClient = httpClient;
     }
 
