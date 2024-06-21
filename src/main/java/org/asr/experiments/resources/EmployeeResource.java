@@ -1,6 +1,7 @@
 package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -13,6 +14,7 @@ public class EmployeeResource {
 
     private final SampleDownstreamClient client;
 
+    @Inject
     public EmployeeResource(SampleDownstreamClient client) {
         this.client = client;
     }

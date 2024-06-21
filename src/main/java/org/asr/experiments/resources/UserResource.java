@@ -2,6 +2,7 @@ package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.hibernate.UnitOfWork;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -22,6 +23,7 @@ public class UserResource {
 
     private final UserDao userDao;
 
+    @Inject
     public UserResource(UserDao userDao) {
         this.userDao = userDao;
     }

@@ -1,6 +1,7 @@
 package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -19,6 +20,7 @@ public class HelloWorldResource {
     private final String defaultName;
     private final AtomicLong counter;
 
+    @Inject
     public HelloWorldResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
