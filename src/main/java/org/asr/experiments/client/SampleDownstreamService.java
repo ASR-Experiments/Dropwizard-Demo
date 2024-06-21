@@ -8,12 +8,12 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriBuilder;
 
 @Singleton
-public class SampleDownstreamClient implements Managed {
+public class SampleDownstreamService implements Managed {
 
     private final Client httpClient;
 
     @Inject
-    public SampleDownstreamClient(Client httpClient) {
+    public SampleDownstreamService(Client httpClient) {
         this.httpClient = httpClient;
     }
 

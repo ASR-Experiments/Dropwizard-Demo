@@ -6,16 +6,16 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import org.asr.experiments.client.SampleDownstreamClient;
+import org.asr.experiments.client.SampleDownstreamService;
 
 @Path("/employee")
 @Produces(MediaType.APPLICATION_JSON)
 public class EmployeeResource {
 
-    private final SampleDownstreamClient client;
+    private final SampleDownstreamService client;
 
     @Inject
-    public EmployeeResource(SampleDownstreamClient client) {
+    public EmployeeResource(SampleDownstreamService client) {
         this.client = client;
     }
 
