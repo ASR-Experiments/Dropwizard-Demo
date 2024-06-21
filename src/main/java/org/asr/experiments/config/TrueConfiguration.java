@@ -21,22 +21,22 @@ public class TrueConfiguration extends Configuration {
     @NotNull
     private HttpConfiguration httpConfig = new HttpConfiguration();
 
-    @JsonProperty
+    @JsonProperty("template")
     public String getTemplate() {
         return template;
     }
 
-    @JsonProperty
+    @JsonProperty("template")
     public void setTemplate(String template) {
         this.template = template;
     }
 
-    @JsonProperty
+    @JsonProperty("defaultName")
     public String getDefaultName() {
         return defaultName;
     }
 
-    @JsonProperty
+    @JsonProperty("defaultName")
     public void setDefaultName(String name) {
         this.defaultName = name;
     }
