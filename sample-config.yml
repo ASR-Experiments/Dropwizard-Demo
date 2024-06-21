@@ -1,0 +1,35 @@
+---
+logging:
+  level: INFO
+  loggers:
+    org.asr.experiments: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+template: Hello, %s!
+defaultName: Stranger
+database:
+  source:
+    driverClass: org.postgresql.Driver
+    user: <DB_USER>
+    password: <DB_PASSWORD>
+    url: jdbc:postgresql://localhost:5432/<DB_NAME>
+
+    # any properties specific to your JDBC driver:
+    properties:
+      charSet: UTF-8
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    # the maximum amount of time to wait on an empty pool before throwing an exception
+    maxWaitForConnection: 1s
+
+    # the SQL query to run when validating a connection's liveness
+    validationQuery: "/* MyApplication Health Check */ SELECT 1"
+
+    # the minimum number of connections to keep open
+    minSize: 8
+
+    # the maximum number of connections to keep open
+    maxSize: 32
+
+    # whether idle connections should be validated
+    checkConnectionWhileIdle: false
