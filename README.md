@@ -76,3 +76,14 @@ update and delete users.
         1. `@Singleton` for singleton beans identification.
         2. `@Inject` for dependency injection.
     4. Inherited `Managed` for non-dropwizard components like `SampleDownstreamService` for _DI_ identification.
+
+### Iteration 4
+
+1. Added 2 sample filters on Request and response respectively:
+    1. `IdepotencyRequestFilter` filters the request based on the `Idempotency-Key` header.
+        * It expects a unique header for each requests.
+        * If header is not present then it invalidates the request.
+        * If header is already used in a prior requests, it still invalidates the request.
+    2. `PoweredByFilter` adds a header `X-Powered-By` to the response.
+        * If configuration `poweredBy` is present, than value is set to be the same.
+        * Otherwise, it defaults to `ASR`.
