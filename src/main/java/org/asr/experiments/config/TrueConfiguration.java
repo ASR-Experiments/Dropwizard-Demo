@@ -6,7 +6,12 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Optional;
+
 public class TrueConfiguration extends Configuration {
+
+    private String poweredBy;
+
     @NotEmpty
     private String template;
 
@@ -59,5 +64,15 @@ public class TrueConfiguration extends Configuration {
     @JsonProperty("http")
     public void setHttpConfig(@Valid @NotNull HttpConfiguration httpConfig) {
         this.httpConfig = httpConfig;
+    }
+
+    @JsonProperty("poweredBy")
+    public Optional<String> getPoweredBy() {
+        return Optional.ofNullable(poweredBy);
+    }
+
+    @JsonProperty("poweredBy")
+    public void setPoweredBy(String poweredBy) {
+        this.poweredBy = poweredBy;
     }
 }
