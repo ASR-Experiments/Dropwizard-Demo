@@ -3,10 +3,15 @@ package org.asr.experiments.module;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
+import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.client.JerseyClientBuilder;
 import jakarta.ws.rs.client.Client;
 import org.asr.experiments.bundle.DatabaseBundle;
 import org.asr.experiments.config.TrueConfiguration;
+import org.asr.experiments.db.entity.UserEntity;
+import org.asr.experiments.db.repository.UserDao;
+import org.asr.experiments.resources.filter.AuthenticationFilter;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,5 +65,22 @@ public class DependencyModule extends DropwizardAwareModule<TrueConfiguration> {
     @Singleton
     public SessionFactory provideSessionFactory() {
         return databaseBundle.getSessionFactory();
+    }
+
+    @Provides
+    @Singleton
+    public UserDao provideUserDao() {
+        return new UserDao(databaseBundle.getSessionFactory());
+    }
+
+    @Provides
+    @Singleton
+    public AuthDynamicFeature provideAuthenticator() {
+        return new AuthDynamicFeature(
+                new BasicCredentialAuthFilter.Builder<UserEntity>()
+                        .setAuthenticator(new AuthenticationFilter(this.provideUserDao(), this.provideSessionFactory()))
+                        .setRealm("SUPER SECRET STUFF")
+                        .buildAuthFilter()
+        );
     }
 }
