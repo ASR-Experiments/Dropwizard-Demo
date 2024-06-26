@@ -1,6 +1,7 @@
 package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.GET;
@@ -32,6 +33,7 @@ public class HelloWorldResource {
 
     @GET
     @Timed
+    @PermitAll
     public SayingDto sayHello(
             @QueryParam("name") Optional<String> name
     ) {
