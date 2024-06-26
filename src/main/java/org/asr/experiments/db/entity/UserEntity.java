@@ -8,9 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import java.security.Principal;
+
 @Entity
 @Table(schema = "user_schema", name = "tbl_user")
-public class UserEntity {
+public class UserEntity implements Principal {
 
     @Id
     @Column(updatable = false, nullable = false, insertable = false)
