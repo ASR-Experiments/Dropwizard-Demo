@@ -4,7 +4,9 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.CachingAuthenticator;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
+import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.client.JerseyClientBuilder;
 import jakarta.ws.rs.client.Client;
 import org.asr.experiments.bundle.DatabaseBundle;
@@ -76,9 +78,17 @@ public class DependencyModule extends DropwizardAwareModule<TrueConfiguration> {
     @Provides
     @Singleton
     public AuthDynamicFeature provideAuthenticator() {
+        // For Authentication
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(this.provideUserDao(), this.provideSessionFactory());
+        // For Caching the authentication credentials
+        CachingAuthenticator<BasicCredentials, UserEntity> cachingAuthenticator = new CachingAuthenticator<>(
+                environment().metrics(),
+                authenticationFilter,
+                configuration().getAuthConfig().getCachePolicy()
+        );
         return new AuthDynamicFeature(
                 new BasicCredentialAuthFilter.Builder<UserEntity>()
-                        .setAuthenticator(new AuthenticationFilter(this.provideUserDao(), this.provideSessionFactory()))
+                        .setAuthenticator(cachingAuthenticator)
                         .setRealm("SUPER SECRET STUFF")
                         .buildAuthFilter()
         );
