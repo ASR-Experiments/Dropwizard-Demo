@@ -87,3 +87,16 @@ update and delete users.
     2. `PoweredByFilter` adds a header `X-Powered-By` to the response.
         * If configuration `poweredBy` is present, than value is set to be the same.
         * Otherwise, it defaults to `ASR`.
+
+### Iteration 5
+
+1. Enabled **Authentication**.
+    1. Added basic authentication filter using `UserEntity` from database (using `username` and `password`
+       from `tbl_user`).
+    2. Inherited `UserEntity` from `Principal` for authentication.
+    3. Added support for `Caching` Authentication.
+2. Enabled **Authorization**
+    1. Added role based authorization based on roles provided by `@RolesAllowed` annotation (Either `"ADMIN"`
+       or `"USER"`).
+    2. Roles of user are added as a field in `UserEntity` which is fetched from database.
+    3. Added support for `Caching` Authorization.
