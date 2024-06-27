@@ -2,6 +2,7 @@ package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.hibernate.UnitOfWork;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Path("/user")
+@RolesAllowed("ADMIN")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
@@ -39,6 +41,7 @@ public class UserResource {
     @Path("/{id}")
     @Timed
     @UnitOfWork
+    @RolesAllowed({"USER", "ADMIN"})
     public Optional<UserEntity> findUser(@PathParam("id") Long id) {
         return userDao.findById(id);
     }

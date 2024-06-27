@@ -1,6 +1,7 @@
 package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -21,6 +22,7 @@ public class EmployeeResource {
 
     @GET
     @Timed
+    @RolesAllowed({"USER"})
     public String getEmployees() {
         return client.getUsers();
     }

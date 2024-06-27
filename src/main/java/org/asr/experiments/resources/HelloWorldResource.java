@@ -2,6 +2,7 @@ package org.asr.experiments.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.GET;
@@ -14,6 +15,7 @@ import org.asr.experiments.api.SayingDto;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
+@RolesAllowed("ADMIN")
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloWorldResource {
