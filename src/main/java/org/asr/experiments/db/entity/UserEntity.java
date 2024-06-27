@@ -2,6 +2,7 @@ package org.asr.experiments.db.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +29,10 @@ public class UserEntity implements Principal {
 
     @Column(name = "password", columnDefinition = "TEXT")
     private String password;
+
+    @Enumerated(value = jakarta.persistence.EnumType.STRING)
+    @Column(name = "role")
+    private AuthRole role;
 
     // Getters and Setters
 
@@ -61,5 +66,13 @@ public class UserEntity implements Principal {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public AuthRole getRole() {
+        return role;
+    }
+
+    public void setRole(AuthRole role) {
+        this.role = role;
     }
 }
