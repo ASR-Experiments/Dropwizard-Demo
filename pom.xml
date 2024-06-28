@@ -48,6 +48,11 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-client</artifactId>
         </dependency>
+        <!--  For Authentication      -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-auth</artifactId>
+        </dependency>
         <!-- For Dependency injection       -->
         <dependency>
             <groupId>ru.vyarus</groupId>

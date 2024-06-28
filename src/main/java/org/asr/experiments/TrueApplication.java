@@ -6,6 +6,7 @@ import io.dropwizard.core.setup.Environment;
 import org.asr.experiments.bundle.DatabaseBundle;
 import org.asr.experiments.config.TrueConfiguration;
 import org.asr.experiments.module.DependencyModule;
+import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 /**
@@ -47,5 +48,6 @@ public class TrueApplication extends Application<TrueConfiguration> {
     @Override
     public void run(final TrueConfiguration configuration,
                     final Environment environment) {
+        environment.jersey().register(RolesAllowedDynamicFeature.class);
     }
 }

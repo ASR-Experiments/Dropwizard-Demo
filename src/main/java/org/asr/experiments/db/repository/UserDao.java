@@ -48,4 +48,11 @@ public class UserDao extends AbstractDAO<UserEntity> {
     public void delete(UserEntity user) {
         currentSession().remove(user);
     }
+
+    public Optional<UserEntity> findByUsername(String username) {
+        Query<UserEntity> query = currentSession().createQuery(
+                "From UserEntity where name = :username", UserEntity.class);
+        query.setParameter("username", username);
+        return Optional.ofNullable(query.uniqueResult());
+    }
 }

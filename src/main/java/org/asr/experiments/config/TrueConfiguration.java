@@ -26,6 +26,9 @@ public class TrueConfiguration extends Configuration {
     @NotNull
     private HttpConfiguration httpConfig = new HttpConfiguration();
 
+    @Valid
+    private AuthenticationConfiguration authenticationConfiguration = new AuthenticationConfiguration();
+
     @JsonProperty("template")
     public String getTemplate() {
         return template;
@@ -74,5 +77,15 @@ public class TrueConfiguration extends Configuration {
     @JsonProperty("poweredBy")
     public void setPoweredBy(String poweredBy) {
         this.poweredBy = poweredBy;
+    }
+
+    @JsonProperty("authentication")
+    public void setAuthentication(AuthenticationConfiguration authenticationConfiguration) {
+        this.authenticationConfiguration = authenticationConfiguration;
+    }
+
+    @JsonProperty("authentication")
+    public AuthenticationConfiguration getAuthConfig() {
+        return authenticationConfiguration;
     }
 }
