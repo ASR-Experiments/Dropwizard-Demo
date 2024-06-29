@@ -16,6 +16,12 @@ public class AuthorizationFilter implements Authorizer<UserEntity> {
     ) {
         try {
             AuthRole expectedRole = AuthRole.valueOf(role);
+            switch (expectedRole) {
+                case ADMIN:
+                    return userEntity.getRole().equals(AuthRole.ADMIN);
+                case USER:
+                    return userEntity.getRole().equals(AuthRole.USER) || userEntity.getRole().equals(AuthRole.ADMIN);
+            }
             return expectedRole.equals(userEntity.getRole());
         } catch (IllegalArgumentException e) {
             return false;
