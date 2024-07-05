@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
         * If configuration `poweredBy` is present, than value is set to be the same.
         * Otherwise, it defaults to `ASR`.
 
-## **Iteration 3**: [0.0.4] - 2024-06-24
+## **Iteration 3**: [0.0.3] - 2024-06-24
 
 1. Added Guice based dependency injection framework.
     1. Added Guice based configuration for the application.
@@ -39,7 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
         2. `@Inject` for dependency injection.
     4. Inherited `Managed` for non-dropwizard components like `SampleDownstreamService` for _DI_ identification.
 
-## **Iteration 2**: [0.0.4] - 2024-06-24
+## **Iteration 2**: [0.0.2] - 2024-06-24
 
 1. A basic Rest endpoint to interact with User table in Postgres.
     1. Hit the following URL in browser to see it in action.
